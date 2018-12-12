@@ -1,35 +1,17 @@
 var $;
 layui.config({
 	base : "js/"
-}).use(['form','layer','jquery','laydate'],function(){
+}).use(['form','layer','jquery'],function(){
 	var form = layui.form,
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
-		laydate = layui.laydate,
 		laypage = layui.laypage;
 		$ = layui.jquery;
 	//===========================================
-	
-		//加载页面选择框数据
-		$.get("getexecutors", function(data){
-				var ml=data.sl;
-				for(var i=0;i<ml.length;i++){
-	        		$("#selectId").append("<option value='"+ml[i].id+"'>"+ml[i].depname+"</option>");
-				}
-				form.render();//必须要再次渲染，要不然option显示不出来
-		});
 		
-		
-	//===========================================
-		 //日期
-	laydate.render({
-		    elem: '#date1',
-		    type: 'datetime'
-    });
-//===========================================	
  	form.on("submit(add)",function(data){
  		var index;
  		 $.ajax({//异步请求返回给后台
-	    	  url:'savaTask',
+	    	  url:'downLoadFromUrl',
 	    	  type:'POST',
 	    	  data:data.field,
 	    	  dataType:'json',

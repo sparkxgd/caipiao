@@ -16,7 +16,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.wudi.bean.CaiXML;
 import com.wudi.model.NavsModel;
 import com.wudi.model.admin.PlurlModel;
-import com.wudi.util.Util;
+import com.wudi.util.MyUtil;
 
 /**
  * 
@@ -167,7 +167,9 @@ public class AdminController extends Controller {
 			e.printStackTrace();
 		}
 	}
-	
+	public void openPlurlAdd() {
+		render("plurl/plurlAdd.html");
+	}
 	
 	/**
      * 从网络Url中下载文件
@@ -177,7 +179,10 @@ public class AdminController extends Controller {
      * @throws IOException
      */
     public void  downLoadFromUrl() throws IOException{
-    	String expect=getPara("q");
+    	int start=getParaToInt("start");
+    	int finish=getParaToInt("finish");
+    	for(int i=start;i<=finish;i++) {
+    		String expect=String.valueOf(i);
     	String urlStr="http://zx.500.com/static/public/sfc/daigou/xml/"+expect+".xml";
     	String fileName=expect+".xml";
     	String savePath="WebContent/downfile";
@@ -191,7 +196,7 @@ public class AdminController extends Controller {
         //得到输入流
         InputStream inputStream = conn.getInputStream();  
         //获取自己数组
-        byte[] getData = Util.readInputStream(inputStream);    
+        byte[] getData = MyUtil.readInputStream(inputStream);    
 
         //文件保存位置
         File saveDir = new File(savePath);
@@ -209,7 +214,25 @@ public class AdminController extends Controller {
         }
         CaiXML c=new CaiXML(expect);
 		PlurlModel.saveList(expect,c.getPlurls());
+    	}
+		
 		setAttr("result", true);
         renderJson();
     }
+    
+	public void openPlurl() {
+		render("plurl/plurlinfo.html");
+	}
+	public void getPlurlList() {
+		// 获取页面查询的关键字
+		String key = getPara("key");
+		int limit=getParaToInt("limit");
+		int page=getParaToInt("page");
+		Page<PlurlModel> list = PlurlModel.getList(page, limit, key);
+		setAttr("code", 0);
+		setAttr("msg", "你好！");
+		setAttr("count", list.getTotalRow());
+		setAttr("data", list.getList());
+		renderJson();
+	}
 }

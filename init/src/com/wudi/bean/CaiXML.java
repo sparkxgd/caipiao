@@ -10,7 +10,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.wudi.util.StringUtil;
+import com.wudi.util.MyUtil;
 
 public class CaiXML {
 	private CaiHead head;
@@ -60,10 +60,10 @@ public class CaiXML {
 		r.setShenheprocess(shenheprocess);
 		r.setUpdatetime(updatetime);
 		r.setOrdernum(Integer.valueOf(ordernum));
-		if(StringUtil.isBlankOrEmpty(result)) {
-			r.setResult(-1);
-		}else {
-			r.setResult(Integer.valueOf(result));
+		if(MyUtil.isBlankOrEmpty(result)) {
+			r.setResult(-1);//暂未开奖
+		}else if("*".equals(result)){
+			r.setResult(-2);//异常开奖，已经放弃或改期了
 		}
 		
 		r.setPlurlStr(plurl);

@@ -17,23 +17,15 @@
 <body class="childrenBody">
 	<form class="layui-form layui-form-pane" name="addform">
 		<div class="layui-form-item">
-			<label class="layui-form-label">标题</label>
+			<label class="layui-form-label">开始期数</label>
 			<div class="layui-input-inline">
-				<input type="text" class="layui-input" name="title"  lay-verify="required" placeholder="请输入楼标题"  autocomplete="off">
+				<input type="text" class="layui-input" name="start"  lay-verify="required" placeholder="10001" autocomplete="off">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">链接</label>
+			<label class="layui-form-label">结束期数</label>
 			<div class="layui-input-inline">
-				<input type="text" class="layui-input" name="href"  placeholder="格式：admin/infos"  autocomplete="off">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">所属父菜单</label>
-			<div class="layui-input-inline">
-			      	<select name="fid"  id="selectId" lay-filter="state">
-			      	<option value="-1">请选择父菜单</option>
-      				</select>
+				<input type="text" class="layui-input" name="finish"  lay-verify="required" placeholder="10001" autocomplete="off">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -44,6 +36,6 @@
 		</div>
 	</form>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
-	<script type="text/javascript" src="../js/sys/navsAdd.js"></script>
+	<script type="text/javascript" src="../js/plurl/plurlAdd.js"></script>
 </body>
 </html>

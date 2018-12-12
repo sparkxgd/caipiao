@@ -5,8 +5,9 @@ import java.util.List;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.activerecord.Page;
 import com.wudi.bean.Plurl;
-import com.wudi.util.StringUtil;
+import com.wudi.util.MyUtil;
 
 /**
  * 
@@ -88,6 +89,15 @@ public class PlurlModel extends Model<PlurlModel> {
 			PlurlModel m=dao.findFirst(sql,expect);
 			return m;
 		}
+		public static Page<PlurlModel> getList(int pageNumber, int pageSize,String key) {
+			String sele_sql="select * ";
+			StringBuffer from_sql=new StringBuffer();
+			from_sql.append("from ").append(tableName);
+			if(!MyUtil.isBlankOrEmpty(key)) {
+				from_sql.append(" where expect like '%"+key+"%'");
+			}
+			return dao.paginate(pageNumber,pageSize,sele_sql,from_sql.toString());
+		} 
 		/**
 		 * 保存
 		* @Description:???
@@ -120,7 +130,7 @@ public class PlurlModel extends Model<PlurlModel> {
 			m.setResult(p.getResult());
 			m.setSpf(p.getSpf());
 			m.setValue(p.getValue());
-			m.setId(StringUtil.getId());
+			m.setId(MyUtil.getId());
 			pmlist.add(m);
 		}
 		

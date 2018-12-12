@@ -1,11 +1,10 @@
 package com.wudi.model;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
-import com.wudi.util.StringUtil;
+import com.wudi.util.MyUtil;
 
 /**
  * 
@@ -117,7 +116,7 @@ public class NavsModel extends Model<NavsModel> {
 			String sele_sql="select * ";
 			StringBuffer from_sql=new StringBuffer();
 			from_sql.append("from ").append(tableName);
-			if(!StringUtil.isBlankOrEmpty(key)) {
+			if(!MyUtil.isBlankOrEmpty(key)) {
 				from_sql.append(" where title like '%"+key+"%'");
 			}
 			return dao.paginate(pageNumber,pageSize,sele_sql,from_sql.toString());
@@ -135,7 +134,7 @@ public class NavsModel extends Model<NavsModel> {
 		m.setTitle(title);
 		m.setHref(href);
 		m.setIcon(icon);
-		m.setId(UUID.randomUUID().toString());
+		m.setId(MyUtil.getId());
 		m.setFid(fid);
 		return m.save();
 	}

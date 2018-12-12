@@ -3,8 +3,10 @@ package com.wudi.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
+import java.util.Random;
 
-public class Util {
+public class MyUtil {
     /**
      * 从输入流中获取字节数组
      * @param inputStream
@@ -21,4 +23,14 @@ public class Util {
         bos.close();  
         return bos.toByteArray();  
     } 
+
+	public static boolean isBlankOrEmpty(String string){
+		return string==null || string.trim().length() == 0;
+	}
+	public static String getId() {
+		Long t=new Date().getTime();
+		Random ra =new Random();
+		int a=ra.nextInt(10000);
+		return t.toString()+a;
+	}
 }
