@@ -30,7 +30,7 @@ public class MyUtil {
 	public static String getId() {
 		Long t=new Date().getTime();
 		Random ra =new Random();
-		int a=ra.nextInt(10000);
+		int a=ra.nextInt(1000000);
 		return t.toString()+a;
 	}
 }
