@@ -213,6 +213,7 @@ public class AdminController extends Controller {
         if(inputStream!=null){
             inputStream.close();
         }
+        System.out.println(expect);
         CaiXML c=new CaiXML(expect);
         HeadModel.saveModel(c.getHead());//保存
 		PlurlModel.saveList(expect,c.getPlurls());

@@ -33,12 +33,20 @@ public class HeadModel extends Model<HeadModel>{
 	}
 	
 	public static boolean saveModel(CaiHead h) {
-		HeadModel m=new HeadModel();
-		m.setId(h.getExpect());
-		m.setfsendtime(h.getFsendtime());
-		m.setupdatetime(h.getUpdatetime());
-		m.setactive(h.getActive());
-		m.save();
+		HeadModel m=dao.findById(h.getExpect());
+		if(m!=null) {
+			m.setfsendtime(h.getFsendtime());
+			m.setupdatetime(h.getUpdatetime());
+			m.setactive(h.getActive());
+			m.update();
+		}else {
+			m=new HeadModel();
+			m.setfsendtime(h.getFsendtime());
+			m.setupdatetime(h.getUpdatetime());
+			m.setactive(h.getActive());
+			m.setId(h.getExpect());
+			m.save();
+		}
 		return true;
 	}
 }

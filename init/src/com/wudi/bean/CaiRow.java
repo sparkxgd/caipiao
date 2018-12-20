@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.wudi.util.MyUtil;
+
 public class CaiRow extends CaiHead{
 	private int ordernum;
 	private int result;
@@ -34,6 +36,11 @@ public class CaiRow extends CaiHead{
 	}
 	private void toPlurl() {
 		String p[]=plurlStr.split("&nbsp;");
+		if(MyUtil.isBlankOrEmpty(plurlStr)) {
+			p=new String[]{"0","0","0"};
+		}
+		
+		
 		//比较大小
 			Plurl pl3=new Plurl();
 			pl3.setExpect(Integer.parseInt(super.getExpect()));
