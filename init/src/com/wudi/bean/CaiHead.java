@@ -5,6 +5,7 @@ public class CaiHead {
 	private String updatetime;
 	private String fsendtime;
 	private String shenheprocess;
+	private int active;//0代表未有开，1代表开机
 	public String getExpect() {
 		return expect;
 	}
@@ -28,6 +29,12 @@ public class CaiHead {
 	}
 	public void setShenheprocess(String shenheprocess) {
 		this.shenheprocess = shenheprocess;
+	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
 	}
 	
 	

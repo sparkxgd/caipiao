@@ -59,7 +59,6 @@ public class CaiRow extends CaiHead{
 			plurls.add(pl3);
 			plurls.add(pl1);
 			plurls.add(pl0);
-			System.out.println("排序前的结果："+plurls);
 	        Collections.sort(plurls, new Comparator<Plurl>(){
 	            /*
 	             * 返回负数表示：p1 小于p2，
@@ -76,7 +75,6 @@ public class CaiRow extends CaiHead{
 	                return -1;
 	            }
 	        });
-	        System.out.println("排序后的结果："+plurls); 
 	        
 	        for(int i=0;i<plurls.size();i++) {
 	        	plurls.get(i).setPei(i+1);

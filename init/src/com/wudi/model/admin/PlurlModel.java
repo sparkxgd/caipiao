@@ -133,7 +133,6 @@ public class PlurlModel extends Model<PlurlModel> {
 			m.setId(MyUtil.getId());
 			pmlist.add(m);
 		}
-		
 		 Db.batchSave(pmlist, 100);
 		
 		return true;

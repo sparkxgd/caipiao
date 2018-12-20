@@ -15,6 +15,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.wudi.bean.CaiXML;
 import com.wudi.model.NavsModel;
+import com.wudi.model.admin.HeadModel;
 import com.wudi.model.admin.PlurlModel;
 import com.wudi.util.MyUtil;
 
@@ -213,7 +214,9 @@ public class AdminController extends Controller {
             inputStream.close();
         }
         CaiXML c=new CaiXML(expect);
+        HeadModel.saveModel(c.getHead());//保存
 		PlurlModel.saveList(expect,c.getPlurls());
+		
     	}
 		
 		setAttr("result", true);

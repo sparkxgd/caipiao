@@ -13,7 +13,6 @@ import org.dom4j.io.SAXReader;
 import com.wudi.util.MyUtil;
 
 public class CaiXML {
-	private CaiHead head;
 	private List<CaiRow> rows=new ArrayList<>();
 	
 	
@@ -60,8 +59,10 @@ public class CaiXML {
 		r.setShenheprocess(shenheprocess);
 		r.setUpdatetime(updatetime);
 		r.setOrdernum(Integer.valueOf(ordernum));
+		r.setActive(1);//默认已经开奖
 		if(MyUtil.isBlankOrEmpty(result)) {
 			r.setResult(-1);//暂未开奖
+			r.setActive(0);
 		}else if("*".equals(result)){
 			r.setResult(-2);//异常开奖，已经放弃或改期了
 		}
@@ -72,9 +73,8 @@ public class CaiXML {
 	
 	
 	
-	
 	public CaiHead getHead() {
-		return head;
+		return rows.get(0);
 	}
 
 	public List<CaiRow> getRows() {
