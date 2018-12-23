@@ -1,20 +1,21 @@
 package com.wudi.controller;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.wudi.bean.CaiXML;
+import com.wudi.bean.Expect;
+import com.wudi.constant.ExpectCon;
 import com.wudi.model.NavsModel;
+import com.wudi.model.admin.AnalyModel;
 import com.wudi.model.admin.HeadModel;
 import com.wudi.model.admin.PlurlModel;
 import com.wudi.util.MyUtil;
@@ -35,6 +36,7 @@ public class AdminController extends Controller {
 	public void index() {
 		render("index.html");
 	}
+
 	public void main() {
 		render("main.html");
 	}
@@ -62,8 +64,8 @@ public class AdminController extends Controller {
 	public void getNavsList() {
 		// 获取页面查询的关键字
 		String key = getPara("key");
-		int limit=getParaToInt("limit");
-		int page=getParaToInt("page");
+		int limit = getParaToInt("limit");
+		int page = getParaToInt("page");
 		Page<NavsModel> list = NavsModel.getList(page, limit, key);
 		setAttr("code", 0);
 		setAttr("msg", "你好！");
@@ -138,105 +140,268 @@ public class AdminController extends Controller {
 		renderJson();
 
 	}
-	
-	
-	
+
+	public void updateLoadFromUrl() throws IOException {
+		String expect = getPara("id");
+		String urlStr = "http://zx.500.com/static/public/sfc/daigou/xml/" + expect + ".xml";
+		String fileName = expect + ".xml";
+		String savePath = "WebContent/downfile";
+		URL url = new URL(urlStr);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		// 设置超时间为3秒
+		conn.setConnectTimeout(3 * 1000);
+		// 防止屏蔽程序抓取而返回403错误
+		conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
+		// 得到输入流
+		InputStream inputStream = conn.getInputStream();
+		// 获取自己数组
+		byte[] getData = MyUtil.readInputStream(inputStream);
+
+		// 文件保存位置
+		File saveDir = new File(savePath);
+		if (!saveDir.exists()) {
+			saveDir.mkdir();
+		}
+		File file = new File(saveDir + File.separator + fileName);
+		FileOutputStream fos = new FileOutputStream(file);
+		fos.write(getData);
+		if (fos != null) {
+			fos.close();
+		}
+		if (inputStream != null) {
+			inputStream.close();
+		}
+		System.out.println(expect);
+		CaiXML c = new CaiXML(expect);
+		HeadModel.saveModel(c.getHead());// 保存开奖信息
+		PlurlModel.saveList(expect, c.getPlurls());//保存赔率
+		AnalyModel.analyByExpect(expect);//顺便分析，注意，要先保存开奖信息，在保存赔率，才可以分析
+		setAttr("result", true);
+		renderJson();
+	}
+
 	/**
 	 * 打开更新信息页面
 	 */
-	public void opencaip() {
-		// 接收页面数据
-		String id = getPara("id");
-		setAttr("id", id);
-		render("sys/navsEdit.html");
+	public void openAddExpect() {
+		render("head/addExpect.html");
 	}
-	
-	public void updateCaipiao() {
-		String expect=getPara("q");
-		 try {
-			URL url = new URL("http://zx.500.com/static/public/sfc/daigou/xml/"+expect+".xml");
-			 InputStream is = url.openStream();
-             InputStreamReader isr = new InputStreamReader(is,"utf-8");
-             //为字符输入流添加缓冲
-             BufferedReader br = new BufferedReader(isr);
-             String data = br.readLine();//读取数据
-             setAttr("data", data);
-             renderJson();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+
+	/**
+	 * 从网络Url中下载文件
+	 * 
+	 * @param urlStr
+	 * @param fileName
+	 * @param savePath
+	 * @throws IOException
+	 */
+	public void addLoadFromUrl() throws IOException {
+		String ex = getPara("expect");
+		String expects[] = ex.split(",");
+		for (String expect : expects) {
+			String urlStr = "http://zx.500.com/static/public/sfc/daigou/xml/" + expect + ".xml";
+			String fileName = expect + ".xml";
+			String savePath = "WebContent/downfile";
+			URL url = new URL(urlStr);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			// 设置超时间为3秒
+			conn.setConnectTimeout(3 * 1000);
+			// 防止屏蔽程序抓取而返回403错误
+			conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
+			// 得到输入流
+			InputStream inputStream = conn.getInputStream();
+			// 获取自己数组
+			byte[] getData = MyUtil.readInputStream(inputStream);
+
+			// 文件保存位置
+			File saveDir = new File(savePath);
+			if (!saveDir.exists()) {
+				saveDir.mkdir();
+			}
+			File file = new File(saveDir + File.separator + fileName);
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.write(getData);
+			if (fos != null) {
+				fos.close();
+			}
+			if (inputStream != null) {
+				inputStream.close();
+			}
+			System.out.println(expect);
+			CaiXML c = new CaiXML(expect);
+			HeadModel.saveModel(c.getHead());// 保存
+			PlurlModel.saveList(expect, c.getPlurls());
 		}
+		setAttr("result", true);
+		renderJson();
 	}
+
 	public void openPlurlAdd() {
 		render("plurl/plurlAdd.html");
 	}
-	
-	/**
-     * 从网络Url中下载文件
-     * @param urlStr
-     * @param fileName
-     * @param savePath
-     * @throws IOException
-     */
-    public void  downLoadFromUrl() throws IOException{
-    	int start=getParaToInt("start");
-    	int finish=getParaToInt("finish");
-    	for(int i=start;i<=finish;i++) {
-    		String expect=String.valueOf(i);
-    	String urlStr="http://zx.500.com/static/public/sfc/daigou/xml/"+expect+".xml";
-    	String fileName=expect+".xml";
-    	String savePath="WebContent/downfile";
-        URL url = new URL(urlStr);  
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();  
-                //设置超时间为3秒
-        conn.setConnectTimeout(3*1000);
-        //防止屏蔽程序抓取而返回403错误
-        conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
 
-        //得到输入流
-        InputStream inputStream = conn.getInputStream();  
-        //获取自己数组
-        byte[] getData = MyUtil.readInputStream(inputStream);    
-
-        //文件保存位置
-        File saveDir = new File(savePath);
-        if(!saveDir.exists()){
-            saveDir.mkdir();
-        }
-        File file = new File(saveDir+File.separator+fileName);    
-        FileOutputStream fos = new FileOutputStream(file);     
-        fos.write(getData); 
-        if(fos!=null){
-            fos.close();  
-        }
-        if(inputStream!=null){
-            inputStream.close();
-        }
-        System.out.println(expect);
-        CaiXML c=new CaiXML(expect);
-        HeadModel.saveModel(c.getHead());//保存
-		PlurlModel.saveList(expect,c.getPlurls());
-		
-    	}
-		
+	public void test() {
+		String years = getPara("year");
+		String year[] = years.split(",");
+		for (String y : year) {
+			Expect ex = ExpectCon.exs.get(y);
+			for (int i = 1; i <= ex.getLength(); i++) {
+				String expect = ex.getExpect(i);
+				System.out.println(expect);
+			}
+		}
 		setAttr("result", true);
-        renderJson();
-    }
-    
+		renderJson();
+	}
+
+	/**
+	 * 从网络Url中下载文件
+	 * 
+	 * @param urlStr
+	 * @param fileName
+	 * @param savePath
+	 * @throws IOException
+	 */
+	public void downLoadFromUrl() throws IOException {
+		String years = getPara("year");
+		String year[] = years.split(",");
+		for (String y : year) {
+			Expect ex = ExpectCon.exs.get(y);
+			for (int i = 1; i <= ex.getLength(); i++) {
+				String expect = ex.getExpect(i);
+				String urlStr = "http://zx.500.com/static/public/sfc/daigou/xml/" + expect + ".xml";
+				String fileName = expect + ".xml";
+				String savePath = "WebContent/downfile";
+				URL url = new URL(urlStr);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				// 设置超时间为3秒
+				conn.setConnectTimeout(3 * 1000);
+				// 防止屏蔽程序抓取而返回403错误
+				conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
+				// 得到输入流
+				InputStream inputStream = conn.getInputStream();
+				// 获取自己数组
+				byte[] getData = MyUtil.readInputStream(inputStream);
+
+				// 文件保存位置
+				File saveDir = new File(savePath);
+				if (!saveDir.exists()) {
+					saveDir.mkdir();
+				}
+				File file = new File(saveDir + File.separator + fileName);
+				FileOutputStream fos = new FileOutputStream(file);
+				fos.write(getData);
+				if (fos != null) {
+					fos.close();
+				}
+				if (inputStream != null) {
+					inputStream.close();
+				}
+				System.out.println(expect);
+				CaiXML c = new CaiXML(expect);
+				HeadModel.saveModel(c.getHead());// 保存
+				PlurlModel.saveList(expect, c.getPlurls());
+			}
+		}
+
+		setAttr("result", true);
+		renderJson();
+	}
+
 	public void openPlurl() {
 		render("plurl/plurlinfo.html");
 	}
+
 	public void getPlurlList() {
 		// 获取页面查询的关键字
 		String key = getPara("key");
-		int limit=getParaToInt("limit");
-		int page=getParaToInt("page");
+		int limit = getParaToInt("limit");
+		int page = getParaToInt("page");
 		Page<PlurlModel> list = PlurlModel.getList(page, limit, key);
 		setAttr("code", 0);
 		setAttr("msg", "你好！");
 		setAttr("count", list.getTotalRow());
 		setAttr("data", list.getList());
+		renderJson();
+	}
+
+	public void openHeads() {
+		render("head/headinfo.html");
+	}
+
+	public void getHeadList() {
+		// 获取页面查询的关键字
+		String key = getPara("key");
+		int limit = getParaToInt("limit");
+		int page = getParaToInt("page");
+		Page<HeadModel> list = HeadModel.getList(page, limit, key);
+		setAttr("code", 0);
+		setAttr("msg", "你好！");
+		setAttr("count", list.getTotalRow());
+		setAttr("data", list.getList());
+		renderJson();
+	}
+
+	public void openHeadPlurs() {
+		String expect = getPara("id");
+		setAttr("expect", expect);
+		renderFreeMarker("head/headplurs.html");
+	}
+
+	public void getHeadPlursList() {
+		// 获取页面查询的关键字
+		String key = getPara("key");
+		String expect = getPara("expect");
+		int limit = getParaToInt("limit");
+		int page = getParaToInt("page");
+		Page<PlurlModel> list = PlurlModel.getList(page, limit, key, expect);
+		setAttr("code", 0);
+		setAttr("msg", "你好！");
+		setAttr("count", list.getTotalRow());
+		setAttr("data", list.getList());
+		renderJson();
+	}
+
+	public void openAnaly() {
+		render("tongji/analyinfo.html");
+	}
+
+	public void getAnalyList() {
+		// 获取页面查询的关键字
+		String key = getPara("key");
+		int limit = getParaToInt("limit");
+		int page = getParaToInt("page");
+		Page<AnalyModel> list = AnalyModel.getList(page, limit, key);
+		setAttr("code", 0);
+		setAttr("msg", "你好！");
+		setAttr("count", list.getTotalRow());
+		setAttr("data", list.getList());
+		renderJson();
+	}
+
+	public void analy() {
+		AnalyModel.analyAll();
+		setAttr("result", true);
+		renderJson();
+	}
+	public void openForecast() {
+		render("tongji/forecastinfo.html");
+	}
+	public void getForecastinfo() {
+		List<AnalyModel> list=AnalyModel.getList();
+		double total=0;
+		int t=0;
+		for(AnalyModel a:list) {
+			if(a.getavgpei()!=0) {
+				total+=a.getavgpei();
+				t++;
+			}
+		}
+		double avg=new BigDecimal(total/t).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue();
+		setAttr("avg", avg);
 		renderJson();
 	}
 }

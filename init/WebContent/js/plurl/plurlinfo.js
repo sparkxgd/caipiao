@@ -13,11 +13,10 @@ layui.config({
 	    url: 'getPlurlList', //数据接口
 	    where: {key: ''},//给后台传的参数
 	    page: true, //开启分页
-	    limit: 10,//每页显示信息条数
+	    limit: 14,//每页显示信息条数
 	    id: 'testReload',
 	    cols: [[ //表头
-		      {field: 'id', title: 'ID', sort: true, fixed: 'left'}
-		      ,{field: 'expect', title: '期数'}
+		      {field: 'expect', title: '期数'}
 		      ,{field: 'ordernum', title: '场次'} 
 		      ,{field: 'result', title: '开奖结果'}
 		      ,{field: 'value', title: '赔率'}
@@ -56,6 +55,7 @@ layui.config({
 				title : "【添加信息】",
 				icon: 2,
 				type : 2,
+				area: ['600px', '400px'],
 				content : "openPlurlAdd",
 				success : function(layero, index){
 					setTimeout(function(){

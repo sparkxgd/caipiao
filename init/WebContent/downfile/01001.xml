@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml>
+  <head expect="01001" updatetime="2009-11-09 22:26:18" fsendtime="0001-01-01 00:00" />
+  <row ordernum="1" hometeam="布雷西" guestteam="威尼斯" homescore="3" guestscore="2" resultscore="10-28 02:30" fixtureid="3181" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001101" />
+  <row ordernum="2" hometeam="切&amp;nbsp;&amp;nbsp;沃" guestteam="都&amp;nbsp;&amp;nbsp;灵" homescore="3" guestscore="0" resultscore="10-28 02:30" fixtureid="3182" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001102" />
+  <row ordernum="3" hometeam="尤&amp;nbsp;&amp;nbsp;文" guestteam="国&amp;nbsp;&amp;nbsp;米" homescore="0" guestscore="0" resultscore="10-28 02:30" fixtureid="3186" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001103" />
+  <row ordernum="4" hometeam="莱&amp;nbsp;&amp;nbsp;切" guestteam="亚特兰" homescore="0" guestscore="2" resultscore="10-28 02:30" fixtureid="3187" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001104" />
+  <row ordernum="5" hometeam="AC米兰" guestteam="博洛尼" homescore="0" guestscore="0" resultscore="10-28 02:30" fixtureid="3190" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001105" />
+  <row ordernum="6" hometeam="帕尔玛" guestteam="维罗纳" homescore="2" guestscore="2" resultscore="10-28 02:30" fixtureid="3193" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001106" />
+  <row ordernum="7" hometeam="佩鲁贾" guestteam="皮亚琴" homescore="1" guestscore="0" resultscore="10-28 02:30" fixtureid="3194" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001107" />
+  <row ordernum="8" hometeam="罗&amp;nbsp;&amp;nbsp;马" guestteam="拉齐奥" homescore="2" guestscore="0" resultscore="10-28 02:30" fixtureid="3196" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001108" />
+  <row ordernum="9" hometeam="乌迪内" guestteam="佛罗伦" homescore="1" guestscore="2" resultscore="10-28 02:30" fixtureid="3198" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001109" />
+  <row ordernum="10" hometeam="曼&amp;nbsp;&amp;nbsp;联" guestteam="利兹联" homescore="1" guestscore="1" resultscore="10-27 21:00" fixtureid="3167" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001110" />
+  <row ordernum="11" hometeam="热&amp;nbsp;&amp;nbsp;刺" guestteam="米德尔" homescore="2" guestscore="1" resultscore="10-27 21:00" fixtureid="3174" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001111" />
+  <row ordernum="12" hometeam="埃弗顿" guestteam="纽卡斯" homescore="1" guestscore="3" resultscore="10-27 21:00" fixtureid="3161" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001112" />
+  <row ordernum="13" hometeam="查尔顿" guestteam="利物浦" homescore="0" guestscore="2" resultscore="10-27 21:00" fixtureid="3158" actionid="1000001001" plurl="...暂无指数..." freviewid="10001001113" />
+</xml>

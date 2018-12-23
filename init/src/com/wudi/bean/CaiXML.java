@@ -65,6 +65,8 @@ public class CaiXML {
 			r.setActive(0);
 		}else if("*".equals(result)){
 			r.setResult(-2);//异常开奖，已经放弃或改期了
+		}else {
+			r.setResult(Integer.parseInt(result));//暂未开奖
 		}
 		
 		r.setPlurlStr(plurl);

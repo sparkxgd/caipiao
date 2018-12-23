@@ -39,10 +39,10 @@ public class PlurlModel extends Model<PlurlModel> {
 	public void setOrdernum(int ordernum) {
 		set("ordernum", ordernum);
 	}
-	public int getExpect() {
+	public String getExpect() {
 		return get("expect");
 	}
-	public void setExpect(int expect) {
+	public void setExpect(String expect) {
 		set("expect", expect);
 	}
 	public int getResult() {
@@ -89,6 +89,11 @@ public class PlurlModel extends Model<PlurlModel> {
 			PlurlModel m=dao.findFirst(sql,expect);
 			return m;
 		}
+		public static List<PlurlModel> getList(String expect) {
+			String sql="select * from "+tableName+" where expect=?";
+			List<PlurlModel> list=dao.find(sql,expect);
+			return list;
+		}
 		public static Page<PlurlModel> getList(int pageNumber, int pageSize,String key) {
 			String sele_sql="select * ";
 			StringBuffer from_sql=new StringBuffer();
@@ -96,7 +101,18 @@ public class PlurlModel extends Model<PlurlModel> {
 			if(!MyUtil.isBlankOrEmpty(key)) {
 				from_sql.append(" where expect like '%"+key+"%'");
 			}
+			from_sql.append(" ORDER BY expect DESC ");
 			return dao.paginate(pageNumber,pageSize,sele_sql,from_sql.toString());
+		} 
+		public static Page<PlurlModel> getList(int pageNumber, int pageSize,String key,String expect) {
+			String sele_sql="select * ";
+			StringBuffer from_sql=new StringBuffer();
+			from_sql.append("from ").append(tableName).append(" where expect=? ");
+			if(!MyUtil.isBlankOrEmpty(key)) {
+				from_sql.append(" and ordernum like '%"+key+"%'");
+			}
+			from_sql.append(" ORDER BY value ");
+			return dao.paginate(pageNumber,pageSize,sele_sql,from_sql.toString(),expect);
 		} 
 		/**
 		 * 保存
@@ -104,7 +120,7 @@ public class PlurlModel extends Model<PlurlModel> {
 		* @return boolean    返回类型
 		* @throws
 		 */
-	public static boolean saveModel(double value,int ordernum,int expect,int result,int pei,int spf) {
+	public static boolean saveModel(double value,int ordernum,String expect,int result,int pei,int spf) {
 		PlurlModel m=new PlurlModel();
 		m.setValue(value);
 		m.setOrdernum(ordernum);

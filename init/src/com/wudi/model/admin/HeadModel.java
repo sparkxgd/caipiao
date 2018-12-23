@@ -1,7 +1,11 @@
 package com.wudi.model.admin;
 
+import java.util.List;
+
 import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.activerecord.Page;
 import com.wudi.bean.CaiHead;
+import com.wudi.util.MyUtil;
 
 public class HeadModel extends Model<HeadModel>{
 	private static final long serialVersionUID = 7448105882425197123L;
@@ -48,5 +52,21 @@ public class HeadModel extends Model<HeadModel>{
 			m.save();
 		}
 		return true;
+	}
+	public static Page<HeadModel> getList(int pageNumber, int pageSize,String key) {
+		String sele_sql="select * ";
+		StringBuffer from_sql=new StringBuffer();
+		from_sql.append("from ").append(tableName);
+		if(!MyUtil.isBlankOrEmpty(key)) {
+			from_sql.append(" where id like '%"+key+"%'");
+		}
+		from_sql.append(" ORDER BY id DESC ");
+		return dao.paginate(pageNumber,pageSize,sele_sql,from_sql.toString());
+	} 
+	
+	public static List<HeadModel> getList(){
+		String sql="select * from "+tableName+" ";
+		List<HeadModel> list=dao.find(sql);
+		return list;
 	}
 }

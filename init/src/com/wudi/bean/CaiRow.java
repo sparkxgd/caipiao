@@ -43,21 +43,21 @@ public class CaiRow extends CaiHead{
 		
 		//比较大小
 			Plurl pl3=new Plurl();
-			pl3.setExpect(Integer.parseInt(super.getExpect()));
+			pl3.setExpect(super.getExpect());
 			pl3.setOrdernum(ordernum);
 			pl3.setResult(result);
 			pl3.setValue(Double.parseDouble(p[0]));
 			pl3.setSpf(3);
 			
 			Plurl pl1=new Plurl();
-			pl1.setExpect(Integer.parseInt(super.getExpect()));
+			pl1.setExpect(super.getExpect());
 			pl1.setOrdernum(ordernum);
 			pl1.setResult(result);
 			pl1.setValue(Double.parseDouble(p[1]));
 			pl1.setSpf(1);
 			
 			Plurl pl0=new Plurl();
-			pl0.setExpect(Integer.parseInt(super.getExpect()));
+			pl0.setExpect(super.getExpect());
 			pl0.setOrdernum(ordernum);
 			pl0.setResult(result);
 			pl0.setValue(Double.parseDouble(p[2]));

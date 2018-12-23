@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>信息添加</title>
-	<meta name="renderer" content="webkit">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
-	<style type="text/css">
-		.layui-form { width:60%; float:left; margin-left:5%; margin-top: 3%}
-	</style>
+<meta charset="utf-8">
+<title>信息添加</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+<style type="text/css">
+.layui-form {
+	width: 60%;
+	float: left;
+	margin-left: 5%;
+	margin-top: 3%
+}
+</style>
 </head>
 <body class="childrenBody">
 	<form class="layui-form layui-form-pane" name="addform">
 		<div class="layui-form-item">
-			<label class="layui-form-label">开始期数</label>
-			<div class="layui-input-inline">
-				<input type="text" class="layui-input" name="start"  lay-verify="required" placeholder="10001" autocomplete="off">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">结束期数</label>
-			<div class="layui-input-inline">
-				<input type="text" class="layui-input" name="finish"  lay-verify="required" placeholder="10001" autocomplete="off">
+			<label class="layui-form-label">请选择要下载年份的数据</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="year" title="2007年" value="2007">
+				<input type="checkbox" name="year" title="2008年" value="2008">
+				<input type="checkbox" name="year" title="2009年" value="2009">
+				<input type="checkbox" name="year" title="2010年" value="2010">
+				<input type="checkbox" name="year" title="2011年" value="2011">
+				<input type="checkbox" name="year" title="2012年" value="2012">
+				<input type="checkbox" name="year" title="2013年" value="2013">
+				<input type="checkbox" name="year" title="2014年" value="2014">
+				<input type="checkbox" name="year" title="2015年" value="2015">
+				<input type="checkbox" name="year" title="2016年" value="2016">
+				<input type="checkbox" name="year" title="2017年" value="2017">
+				<input type="checkbox" name="year" title="2018年" value="2018">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<div class="layui-input-block">
 				<button class="layui-btn" lay-submit="" lay-filter="add">保存</button>
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-		    </div>
+			</div>
 		</div>
 	</form>
 	<script type="text/javascript" src="../../layui/layui.js"></script>

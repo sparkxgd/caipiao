@@ -15,6 +15,7 @@ import com.wudi.controller.WeixinController;
 import com.wudi.interceptor.AdminInterceptor;
 import com.wudi.interceptor.WeixinIntercepter;
 import com.wudi.model.NavsModel;
+import com.wudi.model.admin.AnalyModel;
 import com.wudi.model.admin.HeadModel;
 import com.wudi.model.admin.PlurlModel;
 /**
@@ -68,6 +69,7 @@ public class Config extends JFinalConfig {
 			arpMysql.addMapping("navs", NavsModel.class);//主页面左侧菜单显示的表
 			arpMysql.addMapping("plurl", PlurlModel.class);
 			arpMysql.addMapping("cai_head", HeadModel.class);
+			arpMysql.addMapping("analypei", AnalyModel.class);
 		}
 		//添加插件
 		me.add(dsMysql);

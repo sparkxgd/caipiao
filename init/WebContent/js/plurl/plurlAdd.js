@@ -10,8 +10,15 @@ layui.config({
 		
  	form.on("submit(add)",function(data){
  		var index;
+ 		//获取checkbox[name='year']的值
+ 		var arr = new Array();
+ 		$("input:checkbox[name='year']:checked").each(function(i){
+ 		    arr[i] = $(this).val();
+ 		});
+ 		data.field.year = arr.join(",");//将数组合并成字符串
  		 $.ajax({//异步请求返回给后台
 	    	  url:'downLoadFromUrl',
+// 			  url:"test",
 	    	  type:'POST',
 	    	  data:data.field,
 	    	  dataType:'json',
