@@ -80,7 +80,7 @@ public class PlurlModel extends Model<PlurlModel> {
 	* @throws
 	 */
 		public static List<PlurlModel> getList() {
-			String sql="select * from "+tableName+"";
+			String sql="select * from "+tableName+" ORDER BY value";
 			List<PlurlModel> list=dao.find(sql);
 			return list;
 		}
