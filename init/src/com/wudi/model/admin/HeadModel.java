@@ -65,7 +65,7 @@ public class HeadModel extends Model<HeadModel>{
 	} 
 	
 	public static List<HeadModel> getList(){
-		String sql="select * from "+tableName+" ";
+		String sql="select * from "+tableName+" ORDER BY fsendtime DESC";
 		List<HeadModel> list=dao.find(sql);
 		return list;
 	}

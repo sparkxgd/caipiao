@@ -7,10 +7,12 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.wudi.bean.Analypei;
 import com.wudi.bean.CaiXML;
 import com.wudi.bean.Expect;
 import com.wudi.constant.ExpectCon;
@@ -404,22 +406,34 @@ public class AdminController extends Controller {
 		setAttr("avg", avg);
 		renderJson();
 	}
+
 	/**
 	 *根据每期赔率从小到大的排序显示，查看中奖情况
 	 */
-	public void getPeiOderByList() {
-		// 获取页面查询的关键字
-				String key = getPara("key");
-				int limit = getParaToInt("limit");
-				int page = getParaToInt("page");
-				Page<PlurlModel> list = PlurlModel.getList(page, limit, key);
-				setAttr("code", 0);
-				setAttr("msg", "你好！");
-				setAttr("count", list.getTotalRow());
-				setAttr("data", list.getList());
-				renderJson();
+	public void openAnalypei() {
+		render("tongji/analypeiinfo.html");
 	}
 	
-	
-	
+	public void getAnalypei() {
+		List<HeadModel> listh=HeadModel.getList();
+		List<PlurlModel> listp=PlurlModel.getList();
+		List<Analypei> list=new ArrayList<>();
+		for(HeadModel h:listh) {
+			Analypei ap=new Analypei();
+			List<PlurlModel> lp=new ArrayList<>();
+			for(PlurlModel p:listp) {
+				if(p.getExpect().equals(h.getId())) {
+					lp.add(p);
+				}
+			}
+			ap.setExpect(h.getId());
+			ap.setPlurlist(lp);
+			list.add(ap);
+		}
+		setAttr("code", 0);
+		setAttr("msg", "你好！");
+		setAttr("count", list.size());
+		setAttr("data", list);
+		renderJson();
+	}
 }
