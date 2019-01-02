@@ -132,7 +132,10 @@ public class AnalyModel extends Model<AnalyModel>{
 					}
 				}
 			}
-			double avg=new BigDecimal(total/(onepei+twopei+threepei)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			double avg=0;
+			if(total!=0) {
+				avg=new BigDecimal(total/(onepei+twopei+threepei)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			}
 			
 			AnalyModel a=dao.findById(expect);
 			if(a==null) {
