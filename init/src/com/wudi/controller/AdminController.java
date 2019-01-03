@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.wudi.bean.Analy;
 import com.wudi.bean.Analypei;
 import com.wudi.bean.CaiXML;
 import com.wudi.bean.Expect;
@@ -430,10 +431,17 @@ public class AdminController extends Controller {
 			ap.setPlurlist(lp);
 			list.add(ap);
 		}
+		//记录每个赔的中奖个数
+		List<Analy> alist=new ArrayList<>();
+		for(int i=0;i<42;i++) {
+			alist.add(new Analy(i,list.size()));
+		}
+		MyUtil.calculateVariance(alist, list);//计算方差和中奖概率
 		setAttr("code", 0);
 		setAttr("msg", "你好！");
 		setAttr("count", list.size());
 		setAttr("data", list);
+		setAttr("alist",alist);
 		renderJson();
 	}
 }

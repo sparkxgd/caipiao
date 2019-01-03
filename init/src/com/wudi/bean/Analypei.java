@@ -7,6 +7,7 @@ import com.wudi.model.admin.PlurlModel;
 public class Analypei {
 	private String expect;
 	private List<PlurlModel> plurlist;
+	
 	public String getExpect() {
 		return expect;
 	}
