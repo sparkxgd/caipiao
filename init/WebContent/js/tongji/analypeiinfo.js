@@ -27,314 +27,444 @@ layui.config({
 	        $('thead').append(str);
 	   },
 	    cols: [[ //表头
-		      {field: 'expect', title: '期数',width:80}
-		      ,{field: 'v10', title: '11', width:80,lign:'center', 
+		      {field: 'expect', title: '期数',width:105}
+		      ,{field: 'v10', title: '11', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[0];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>';
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v11', title: '12', width:80,lign:'center', 
+		      ,{field: 'v11', title: '12', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[1];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      } 
-		      ,{field: 'v12', title: '13', width:80,lign:'center', 
+		      ,{field: 'v12', title: '13', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[2];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v13', title: '14', width:80,lign:'center', 
+		      ,{field: 'v13', title: '14', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[3];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v14', title: '15', width:80,lign:'center', 
+		      ,{field: 'v14', title: '15', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[4];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v15', title: '16', width:80,lign:'center', 
+		      ,{field: 'v15', title: '16', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[5];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v16', title: '17', width:80,lign:'center', 
+		      ,{field: 'v16', title: '17', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[6];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v17', title: '18', width:80,lign:'center', 
+		      ,{field: 'v17', title: '18', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[7];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v18', title: '19', width:80,lign:'center', 
+		      ,{field: 'v18', title: '19', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[8];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v19', title: '110', width:80,lign:'center', 
+		      ,{field: 'v19', title: '110', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[9];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v110', title: '111', width:80,lign:'center', 
+		      ,{field: 'v110', title: '111', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[10];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v111', title: '112', width:80,lign:'center', 
+		      ,{field: 'v111', title: '112', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[11];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v112', title: '113', width:80,lign:'center', 
+		      ,{field: 'v112', title: '113', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[12];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v113', title: '114', width:80,lign:'center', 
+		      ,{field: 'v113', title: '114', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[13];
-		    		  if(v.result==v.spf){
-		    			 return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			  return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-red">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>'; 
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';  
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v20', title: '21', width:80,lign:'center', 
+		      ,{field: 'v20', title: '21', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[14];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v21', title: '22', width:80,lign:'center', 
+		      ,{field: 'v21', title: '22', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[15];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v22', title: '23', width:80,lign:'center', 
+		      ,{field: 'v22', title: '23', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[16];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v23', title: '24', width:80,lign:'center', 
+		      ,{field: 'v23', title: '24', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[17];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v24', title: '25', width:80,lign:'center', 
+		      ,{field: 'v24', title: '25', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[18];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v25', title: '26', width:80,lign:'center', 
+		      ,{field: 'v25', title: '26', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[19];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
 		      }
-		      ,{field: 'v26', title: '27', width:80,lign:'center', 
+		      ,{field: 'v26', title: '27', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[20];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v27', title: '28', width:80,lign:'center', 
+		      },{field: 'v27', title: '28', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[21];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v28', title: '29', width:80,lign:'center', 
+		      },{field: 'v28', title: '29', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[22];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v29', title: '30', width:80,lign:'center', 
+		      },{field: 'v29', title: '210', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[23];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v30', title: '31', width:80,lign:'center', 
+		      },{field: 'v210', title: '211', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[24];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v31', title: '32', width:80,lign:'center', 
+		      },{field: 'v211', title: '212', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[25];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v32', title: '33', width:80,lign:'center', 
+		      },{field: 'v212', title: '213', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[26];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v33', title: '34', width:80,lign:'center', 
+		      },{field: 'v213', title: '214', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[27];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }
-		      },{field: 'v34', title: '35', width:80,lign:'center', 
+		      },{field: 'v31', title: '31', width:105,lign:'center', 
 		    	  templet: function(d){
 		    		  var v=d.plurlist[28];
-		    		  if(v.result==v.spf){
-		    			  return '<span class="layui-badge layui-bg-orange">'+v.value+'['+v.spf+']'+'</span>'; 
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
 		    		  }else{
-		    			  return '<span>'+v.value+'['+v.spf+']'+'</span>';  
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v32', title: '32', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[29];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v33', title: '33', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[30];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v34', title: '34', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[31];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v35', title: '35', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[32];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v36', title: '36', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[33];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v37', title: '37', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[34];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v38', title: '38', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[35];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v39', title: '39', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[36];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v310', title: '310', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[37];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v311', title: '311', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[38];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v312', title: '312', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[39];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v313', title: '313', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[40];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
+		    		  }
+		    		 
+		    		  }
+		      },{field: 'v314', title: '314', width:105,lign:'center', 
+		    	  templet: function(d){
+		    		  var v=d.plurlist[41];
+		    		  if(v.spf==v.result){
+		    			   return '<span title="第'+v.ordernum+'场"  class="layui-badge layui-bg-green">'+v.value+'-'+v.spf+'</span>'; 
+		    		  }else{
+		    			  return '<span title="第'+v.ordernum+'场">'+v.value+'-'+v.spf+'</span>';   
 		    		  }
 		    		 
 		    		  }

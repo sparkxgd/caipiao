@@ -22,7 +22,7 @@ layui.config({
 		      ,{field: 'value', title: '赔率', lign:'center', 
 		    	  templet: function(d){
 		    		  if(d.result==d.spf){
-		    			  return '<span style="color: red;">'+d.value+'</span>';
+		    			  return '<span class="layui-badge layui-bg-red">'+d.value+'</span>';
 		    		  }else{
 		    			  return '<span>'+d.value+'</span>'; 
 		    		  }

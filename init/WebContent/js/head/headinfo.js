@@ -22,9 +22,9 @@ layui.config({
 		      ,{field: 'active', title: '是否开奖', lign:'center', 
 		    	  templet: function(d){
 		    		  if(d.active==1){
-		    			  return '<span style="color: green;">已开奖</span>';
+		    			  return '<span class="layui-badge layui-bg-green">已开奖</span>';
 		    		  }else{
-		    			  return '<span style="color: #c00;">未开奖</span>';
+		    			  return '<span class="layui-badge layui-bg-red">未开奖</span>';
 		    		  }}
 		      }
 		      ,{fixed: 'right', align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
