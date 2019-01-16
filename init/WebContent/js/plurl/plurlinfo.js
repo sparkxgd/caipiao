@@ -19,7 +19,15 @@ layui.config({
 		      {field: 'expect', title: '期数'}
 		      ,{field: 'ordernum', title: '场次'} 
 		      ,{field: 'result', title: '开奖结果'}
-		      ,{field: 'value', title: '赔率'}
+		      ,{field: 'value', title: '赔率', lign:'center', 
+		    	  templet: function(d){
+		    		  if(d.result==d.spf){
+		    			  return '<span class="layui-badge layui-bg-red">'+d.value+'</span>';
+		    		  }else{
+		    			  return '<span>'+d.value+'</span>'; 
+		    		  }
+		    		  }
+		      }
 		      ,{field: 'spf', title: '胜平负'}
 		      ,{field: 'pei', title: '赔数'}
 		      ,{fixed: 'right', align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
