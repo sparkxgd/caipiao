@@ -200,7 +200,7 @@ public class AdminController extends Controller {
 	 * @throws IOException
 	 */
 	public void addLoadFromUrl() throws IOException {
-		String ex = getPara("expect");
+		String ex = getPara("year");
 		String expects[] = ex.split(",");
 		for (String expect : expects) {
 			String urlStr = "http://zx.500.com/static/public/sfc/daigou/xml/" + expect + ".xml";
