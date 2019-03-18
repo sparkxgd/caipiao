@@ -84,6 +84,16 @@ public class PlurlModel extends Model<PlurlModel> {
 			List<PlurlModel> list=dao.find(sql);
 			return list;
 		}
+		public static List<PlurlModel> getList(double minvalue,double maxvalue) {
+			String sql="select * from "+tableName+" where `value`>? and `value`<? ORDER BY expect desc";
+			List<PlurlModel> list=dao.find(sql,minvalue,maxvalue);
+			return list;
+		}
+		public static List<PlurlModel> getListByResult(double minvalue,double maxvalue) {
+			String sql="select * from "+tableName+" where `value`>? and `value`<? and result=spf ORDER BY expect desc";
+			List<PlurlModel> list=dao.find(sql,minvalue,maxvalue);
+			return list;
+		}
 		public static PlurlModel getModel(String expect) {
 			String sql="select * from "+tableName+" where expect=?";
 			PlurlModel m=dao.findFirst(sql,expect);

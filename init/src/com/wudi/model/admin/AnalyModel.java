@@ -47,6 +47,10 @@ public class AnalyModel extends Model<AnalyModel>{
 		String sql="select * from "+tableName+"";
 		return dao.find(sql);
 	}
+	public static List<AnalyModel> getListbyOrder(){
+		String sql="select * from "+tableName+" ORDER BY id DESC";
+		return dao.find(sql);
+	}
 	public static Page<AnalyModel> getList(int pageNumber, int pageSize,String key) {
 		String sele_sql="select * ";
 		StringBuffer from_sql=new StringBuffer();

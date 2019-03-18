@@ -16,6 +16,7 @@ import com.wudi.bean.Analy;
 import com.wudi.bean.Analypei;
 import com.wudi.bean.CaiXML;
 import com.wudi.bean.Expect;
+import com.wudi.bean.TDvoTwo;
 import com.wudi.constant.ExpectCon;
 import com.wudi.model.NavsModel;
 import com.wudi.model.admin.AnalyModel;
@@ -416,32 +417,133 @@ public class AdminController extends Controller {
 	}
 	
 	public void getAnalypei() {
-		List<HeadModel> listh=HeadModel.getList();
-		List<PlurlModel> listp=PlurlModel.getList();
-		List<Analypei> list=new ArrayList<>();
-		for(HeadModel h:listh) {
-			Analypei ap=new Analypei();
-			List<PlurlModel> lp=new ArrayList<>();
-			for(PlurlModel p:listp) {
-				if(p.getExpect().equals(h.getId())) {
-					lp.add(p);
+		List<Analypei> list=ExpectCon.list;
+		List<Analy> alist=ExpectCon.alist;
+		if(list.size()<1&&alist.size()<1){
+
+			List<HeadModel> listh=HeadModel.getList();
+			List<PlurlModel> listp=PlurlModel.getList();
+			list=new ArrayList<>();
+			for(HeadModel h:listh) {
+				Analypei ap=new Analypei();
+				List<PlurlModel> lp=new ArrayList<>();
+				for(PlurlModel p:listp) {
+					if(p.getExpect().equals(h.getId())) {
+						lp.add(p);
+						if(lp.size()==42) {
+							break;
+						}
+					}
 				}
+				ap.setExpect(h.getId());
+				ap.setPlurlist(lp);
+				list.add(ap);
 			}
-			ap.setExpect(h.getId());
-			ap.setPlurlist(lp);
-			list.add(ap);
-		}
-		//记录每个赔的中奖个数
-		List<Analy> alist=new ArrayList<>();
-		for(int i=0;i<42;i++) {
-			alist.add(new Analy(i,list.size()));
-		}
-		MyUtil.calculateVariance(alist, list);//计算方差和中奖概率
-		setAttr("code", 0);
+			//记录每个赔的中奖个数
+			alist=new ArrayList<>();
+			for(int i=0;i<42;i++) {
+				alist.add(new Analy(i,list.size()));
+			}
+			MyUtil.calculateVariance(alist, list);//计算方差和中奖概率
+			ExpectCon.list=list;
+			ExpectCon.alist=alist;
+		}		
+		// 获取页面查询的关键字
+		int limit = getParaToInt("limit");
+		int page = getParaToInt("page");
+		
 		setAttr("msg", "你好！");
+		setAttr("code", 0);
 		setAttr("count", list.size());
-		setAttr("data", list);
+		setAttr("data", list.subList((page-1)*limit, page*limit));
 		setAttr("alist",alist);
+		renderJson();
+	}
+	
+	/**
+	 *根据阶段赔率小到大的排序显示，分析中奖情况
+	 */
+	public void openAnalypeitwo() {
+		render("tongji/analypeiinfotwo.html");
+	}
+	public void getAnalypeitwoData() {
+		List<Analypei> list=new ArrayList<>();
+		int k=50;
+		for(int i=0;i<k;i++) {
+			Analypei a=new Analypei();
+			a.setPlurlist(PlurlModel.getList(1.0+(i*0.1),1.099+(i*0.1)));
+			list.add(a);
+		}
+		Analypei a=new Analypei();
+		a.setPlurlist(PlurlModel.getList(1.0+(k*0.1),50));
+		list.add(a);
+		setAttr("list", list);
+		renderJson();
+	}
+	public void opentest() {
+		render("tongji/test.html");
+	}
+	public void openanlyavgvalueinfo() {
+		render("tongji/analyavgvalueinfo.html");
+	}
+	public void getanlyavgvalueinfoData() {
+		List<AnalyModel> list = AnalyModel.getList();
+		List<TDvoTwo> data=new ArrayList<>();
+		List<String> names=new ArrayList<>();
+		for(AnalyModel a:list) {
+			TDvoTwo t=new TDvoTwo();
+			t.setName(a.getId());
+			t.setValue(String.valueOf(a.getavgpei()));
+			data.add(t);
+			names.add(a.getId());
+		}
+		setAttr("data", data);
+		setAttr("names", names);
+		renderJson();
+	}
+	public void getanlyavgvalueinfoData1() {
+		List<AnalyModel> list = AnalyModel.getList();
+		List<TDvoTwo> data=new ArrayList<>();
+		List<String> names=new ArrayList<>();
+		for(AnalyModel a:list) {
+			TDvoTwo t=new TDvoTwo();
+			t.setName(a.getId());
+			t.setValue(String.valueOf(a.getonepei()));
+			data.add(t);
+			names.add(a.getId());
+		}
+		setAttr("data", data);
+		setAttr("names", names);
+		renderJson();
+	}
+	public void getanlyavgvalueinfoData2() {
+		List<AnalyModel> list = AnalyModel.getList();
+		List<TDvoTwo> data=new ArrayList<>();
+		List<String> names=new ArrayList<>();
+		for(AnalyModel a:list) {
+			TDvoTwo t=new TDvoTwo();
+			t.setName(a.getId());
+			t.setValue(String.valueOf(a.gettwopei()));
+			data.add(t);
+			names.add(a.getId());
+		}
+		setAttr("data", data);
+		setAttr("names", names);
+		renderJson();
+	}
+	public void getanlyavgvalueinfoData3() {
+		List<AnalyModel> list = AnalyModel.getList();
+		List<TDvoTwo> data=new ArrayList<>();
+		List<String> names=new ArrayList<>();
+		for(AnalyModel a:list) {
+			TDvoTwo t=new TDvoTwo();
+			t.setName(a.getId());
+			t.setValue(String.valueOf(a.getthreepei()));
+			data.add(t);
+			names.add(a.getId());
+		}
+		setAttr("data", data);
+		setAttr("names", names);
 		renderJson();
 	}
 }

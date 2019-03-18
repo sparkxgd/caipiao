@@ -1,11 +1,18 @@
 package com.wudi.constant;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.wudi.bean.Analy;
+import com.wudi.bean.Analypei;
 import com.wudi.bean.Expect;
 
 public class ExpectCon {
+	public static List<Analypei> list=new ArrayList<>();
+	public static List<Analy> alist=new ArrayList<>();
+	
 	public static Map<String,Expect> exs=new HashMap<String,Expect>();
 	static {
 		Expect y7=new Expect(2007,105);
