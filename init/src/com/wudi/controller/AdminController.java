@@ -306,6 +306,8 @@ public class AdminController extends Controller {
 				}
 				System.out.println(expect);
 				CaiXML c = new CaiXML(expect);
+				//数据保存完成后，就删掉保存的文件
+				file.delete();
 				HeadModel.saveModel(c.getHead());// 保存
 				PlurlModel.saveList(expect, c.getPlurls());
 			}

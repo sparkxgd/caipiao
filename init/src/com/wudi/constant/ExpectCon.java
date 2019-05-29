@@ -39,6 +39,8 @@ public class ExpectCon {
 		exs.put("2017",y17);
 		Expect y18=new Expect(2018,176);
 		exs.put("2018",y18);
+		Expect y19=new Expect(2019,72);
+		exs.put("2019",y19);
 		
 	}
 	
